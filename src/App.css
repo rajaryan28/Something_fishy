@@ -12,3 +12,91 @@
   font-weight: 350;
   font-style: normal;
 }
+
+
+/* chat gpt */
+
+/* App Container */
+.app-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header */
+.header h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+/* Cards Container */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.content {
+  text-align: left;
+}
+
+.content strong {
+  font-size: 1rem;
+}
+
+.content p {
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Footer */
+.footer {
+  position: fixed; /* Stick to bottom */
+  bottom: 2.5%;
+  left: 50%; /* Center the footer */
+  transform: translateX(-50%); /* Offset by 50% of its own width */
+  width: 90%; /* Make it slightly smaller than full width */
+  max-width: 600px; /* Optional: to match a fixed design size */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 10px 0;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.footer button:active {
+  transform: scale(0.95);
+}
