@@ -53,6 +53,8 @@ router.post(
   );
   
 
+  
+
 // Route 3 : Update an existing  post of the specific user : Patch "/api/posts/updatepost". Login required
 
 router.patch("/updatepost/:id", fetchuser, async (req, res) => {
