@@ -7,7 +7,7 @@ function App() {
     <>
        <BrowserRouter>
        <Navbar/>
-        <center>Hello this is Raj aryan</center>
+
        <Footer/>
         </BrowserRouter>
     </>
