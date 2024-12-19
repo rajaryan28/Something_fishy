@@ -5,7 +5,7 @@ const User=require('../Models/User')
 const fetchuser = require('../middleware/fetchuser');
 const router= express.Router()
 
-// Route 1 : Fetching all the notes of the specific user : Get "/api/posts/". Login required
+// Route 1 : Fetching all the posts  : Get "/api/posts/". Login required
 
 router.get("/",fetchuser,async (req, res) => {
     try {
