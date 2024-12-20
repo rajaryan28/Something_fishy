@@ -1,16 +1,57 @@
-#title {
-    letter-spacing: 5px;
-    font-family: "Over the Rainbow", cursive;
-  font-weight: 500;
-  font-style: normal;
+/* Specific codes for the mobiles */
+@media (max-width: 412px) and (orientation: portrait){
+
+  #hamburger{
+    left: -7%;
+  }
 }
 
-#title02{
+
+#title {
+    letter-spacing: 7px;
+    font-family: "Over the Rainbow", cursive;
+  font-weight: 300;
+  font-style: normal;
+  text-decoration: underline;
+  text-shadow: 1px 2px 2px #4b4a4a;
+  animation-name: blink;
+  
+
+}
+
+#title02,#priyadarshini{
 
     font-size: 15px;
     font-family: "Lato", sans-serif;
   font-weight: 350;
   font-style: normal;
+}
+
+@keyframes blink {
+  0%{
+    opacity: 0%;
+  }
+  25%{
+    opacity: 50%;
+  }
+  50%{
+    opacity: 100%;
+  }
+  75%{
+    opacity: 50%;
+  }
+  100%{
+    opacity: 0%;
+  }
+  
+}
+#priyadarshini{
+  font-size: 10px;
+  text-align: center;
+  animation-name: blink;
+  animation-duration:5s;
+  animation-iteration-count:infinite;
+  animation-timing-function: linear;
 }
 
 
