@@ -16,10 +16,30 @@ const PostState = (props) => {
         "_id": "675c69bf91be382db8001ea6",
         "username": "raj_aryan28"
       },
+      "post": "Hey i am dash dash dash, I am all write.knbkjn i ijbhiihihygygt7fr6frcrcrctfctfjsidwijdnwiehwewhdbfwdff het ] hey mh nameis raj aryan here i sma today to tell you about the side effect of the eating non vrg with you veg frirn=ends",
+      "date": "2024-12-14T14:56:16.728Z",
+      "__v": 0
+    },
+    {
+      "_id": "675d9c90388b552e6bb693e1",
+      "user": {
+        "_id": "675c69bf91be382db8001ea6",
+        "username": "raj_aryan28"
+      },
       "post": "Hey i am dash dash dash, I am all write.",
       "date": "2024-12-14T14:56:16.728Z",
       "__v": 0
-    }
+    },
+    {
+      "_id": "675d9c90388b552e6bb693e1",
+      "user": {
+        "_id": "675c69bf91be382db8001ea6",
+        "username": "raj_aryan28"
+      },
+      "post": "Hey i am dash dash dash, I am all write.",
+      "date": "2024-12-14T14:56:16.728Z",
+      "__v": 0
+    },
   ]
    
   const [post,setPost] = useState(PostInitial)

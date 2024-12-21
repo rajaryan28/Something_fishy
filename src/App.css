@@ -1,9 +1,16 @@
+/* #postCard{
+  width: 500px;
+} */
 /* Specific codes for the mobiles */
-@media (max-width: 412px) and (orientation: portrait){
+@media (max-width: 500px) and (orientation: portrait){
 
   #hamburger{
-    left: -7%;
+    left: -11.5%;
   }
+  /* #postCard{
+    width: 350px;
+  } */
+
 }
 
 
@@ -57,61 +64,6 @@
 
 /* chat gpt */
 
-/* App Container */
-.app-container {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f8f8f8;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Header */
-.header h1 {
-  font-size: 2rem;
-  margin: 20px 0;
-}
-
-/* Cards Container */
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  width: 300px;
-  height: 100px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.content {
-  text-align: left;
-}
-
-.content strong {
-  font-size: 1rem;
-}
-
-.content p {
-  margin: 5px 0 0;
-  font-size: 0.8rem;
-  color: #555;
-}
 
 /* Footer */
 .footer {
