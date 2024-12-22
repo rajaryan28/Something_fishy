@@ -32,8 +32,8 @@ const Navbar = () => {
 
 
       <nav className="navbar bg-body-tertiary">
-        <span><i id="hamburger" className="fa-solid fa-bars mx-5 mt-3 btn " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style={{"position": "absolute",
-    "top": "20%","cursor":"pointer"}}></i></span>
+        <i id="hamburger" className="fa-solid fa-bars mx-5 mt-3 btn " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style={{"position": "absolute",
+    "top": "20%","cursor":"pointer"}}></i>
         <div className="container-fluid h5 d-flex justify-content-center">
       <sup id="priyadarshini" >Priyadarshini's</sup>
           <span className="navbar-brand mb-2 mt-3 h1"><span id="title">Anonymous</span> <sub id="title02">media</sub> </span>

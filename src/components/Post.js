@@ -7,7 +7,7 @@ const Posts = () => {
     const {post, setPost} = context;
     return (
         <div className="row my-3">
-            <h2>Posts</h2> 
+            <h2><center>Posts</center></h2> 
             {post.map((post)=>{
                 return <PostItem post={post}/>  
             })}

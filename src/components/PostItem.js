@@ -5,10 +5,10 @@ const PostItem = (props) => {
     <div>
       <div
         class="card mx-auto my-4 shadow-lg"
-        style={{"max-width": "600px", "border-radius": "15px", "backgroundColor": "add8e6","overflow":"hidden","margin-left":"1rem","margin-right":"1rem"}}
+        style={{ "border-radius": "15px", "backgroundColor": "add8e6","overflow":"hidden"}}
         id="postCard"
       >
-        <div class="card-body d-flex align-items-center">
+        <div class="card-body d-flex flex-sm-row align-items-center">
            {/* Profile Circle   */}
           <div
             class="circle me-3 flex-shrink-0"

@@ -1,15 +1,20 @@
-/* #postCard{
-  width: 500px;
-} */
+#postCard{
+  width: 600px;
+}
 /* Specific codes for the mobiles */
 @media (max-width: 500px) and (orientation: portrait){
 
   #hamburger{
     left: -11.5%;
   }
-  /* #postCard{
-    width: 350px;
-  } */
+  #postCard{
+    width: 330px;
+  }
+  .circle{
+    width: 30px;
+    height: 30px;
+    
+  }
 
 }
 
