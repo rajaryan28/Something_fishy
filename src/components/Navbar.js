@@ -5,21 +5,21 @@ const Navbar = () => {
     <>
 
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div className="offcanvas-header">
+    <h5 className="offcanvas-title" id="offcanvasExampleLabel"></h5>
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-  <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link " aria-current="page" href="#">Active</a>
+  <div className="offcanvas-body">
+  <ul className="nav">
+  <li className="nav-item">
+    <a className="nav-link " aria-current="page" href="#">Active</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link " href="#">Link</a>
+  <li className="nav-item">
+    <a className="nav-link " href="#">Link</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+  <li className="nav-item">
+    <a className="nav-link" href="#">Link</a>
   </li>
 </ul>
 <h4>Hey my name is Raj aryan </h4>
