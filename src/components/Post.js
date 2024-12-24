@@ -11,6 +11,8 @@ const Posts = () => {
             {post.map((post)=>{
                 return <PostItem post={post}/>  
             })}
+            <div className='mb-5'></div>
+            
             </div>
     )
 }

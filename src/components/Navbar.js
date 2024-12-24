@@ -7,19 +7,19 @@ const Navbar = () => {
 
 <div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div className="offcanvas-header">
-    <h5 className="offcanvas-title" id="offcanvasExampleLabel"></h5>
+    <h5 className="offcanvas-title" id="offcanvasExampleLabel">hii</h5>
     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div className="offcanvas-body">
   <ul className="nav">
   <li className="nav-item">
-    <a className="nav-link " aria-current="page" href="#">Active</a>
+    <a className="nav-link " aria-current="page" href="/">Active</a>
   </li>
   <li className="nav-item">
-    <a className="nav-link " href="#">Link</a>
+    <a className="nav-link " href="/">Link</a>
   </li>
   <li className="nav-item">
-    <a className="nav-link" href="#">Link</a>
+    <a className="nav-link" href="/">Link</a>
   </li>
 </ul>
 <h4>Hey my name is Raj aryan </h4>
