@@ -23,7 +23,7 @@ const Addpost = () => {
       <div className="form-floating d-grid gap-2">
   <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="post" onChange={onChange}
             value={post.post} style={{"height": "150px"}}></textarea>
-  <label for="floatingTextarea2">Post</label>
+  <label htmlFor="floatingTextarea2">Post</label>
   <button className='btn btn-dark my-2 ' disabled={post.post.length < 2} onClick={handleSubmit} >Add post</button>
 </div>
     </div>

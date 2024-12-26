@@ -13,7 +13,7 @@ const Posts = () => {
         <div className="row my-3">
             <h2><center>Posts</center></h2> 
             {Posts.map((post)=>{
-                return <PostItem post={post}/>  
+                return <PostItem key={post._id} post={post} user={post.user}/>  
             })}
             <div className='mb-5'></div>
             

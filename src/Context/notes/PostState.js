@@ -2,7 +2,7 @@ import { useState } from "react";
 import PostContext from "./PostContext";
 
 const PostState = (props) => {
-  const host = "http://localhost:6000";
+  const host = "http://localhost:4000";
   const PostInitial = [];
   const [Posts, setPosts] = useState(PostInitial);
 

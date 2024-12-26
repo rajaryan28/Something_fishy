@@ -4,7 +4,7 @@ connectToMongo()
 const express = require('express')
 var cors = require('cors') 
 const app = express()
-const port = 6000
+const port = 4000
 
 app.use(cors())
 app.use(express.json())
@@ -18,5 +18,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Something-fishy app listening on port ${port}`)
 })
