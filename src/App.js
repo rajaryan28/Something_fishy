@@ -1,18 +1,23 @@
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import PostState from "./Context/notes/PostState";
-import Posts from "./components/Post";
-import Addpost from "./components/Addpost";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import Home from "./components/Home";
 function App() {
   return (
     <>
       <PostState>
         <BrowserRouter>
           <Navbar />
-          <Addpost/>
-          <Posts/>
+          <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          </Routes>
+          
           <Footer />
         </BrowserRouter>
       </PostState>
