@@ -5,8 +5,8 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 var jwt = require('jsonwebtoken')
 var fetchuser = require('../middleware/fetchuser')
-
 const JWT_SECRET = 'raj_of_priyadarshini'
+let success = false;
 
 
 //Route 1: Creating a user using : POST :/api/auth/createuser
@@ -22,7 +22,7 @@ router.post('/createuser',[
 ],async(req,res)=>{
    const errors = validationResult(req);
     if(!errors.isEmpty()){
-        return res.status(400).json({errors:errors.array()});
+        return res.status(400).json({success,errors:errors.array()});
         
     }
   try{
@@ -72,8 +72,8 @@ router.post("/login",[
 ],async (req,res)=>{
    const errors = validationResult(req);
    if(!errors.isEmpty()){
-       
-       return res.status(400).json({errors:errors.array()});
+       success=false
+       return res.status(400).json({success,errors:errors.array()});
    }
    
    const {email,password}= await req.body;
@@ -81,13 +81,15 @@ router.post("/login",[
    try{
        let user = await User.findOne({email:req.body.email})
        if(!user){
-           return res.status(400).json({error:"Login with correct credentials!"})
+         success=false
+           return res.status(400).json({success,error:"Login with correct credentials!"})
        }
 
        const comparePassword = await bcrypt.compare(password , user.password)
 
        if (!comparePassword){
-           return res.status(400).json({error:"Login with correct credentials!"})
+         success=false
+           return res.status(400).json({success,error:"Login with correct credentials!"})
        }
 
 
@@ -95,13 +97,15 @@ router.post("/login",[
            id:user.id  //which data you wanna take to authenticate the user
        })
        const authToken= jwt.sign(data,JWT_SECRET)
-       res.json({authToken})
+       success=true
+       res.json({success,authToken})
 
 
 }
    catch (error){
+      success=false
        console.error(error.message)
-       res.status(500).send("Some Internal error occured")
+       res.status(500).send({success},"Some Internal error occured")
    }
 })
 
