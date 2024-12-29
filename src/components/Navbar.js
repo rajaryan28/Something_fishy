@@ -41,8 +41,8 @@ const Navbar = () => {
         </div>
         <div className="justify-content-end" style={{"position": "absolute",
     "right": "1%","cursor":"pointer"}}>
-        <Link class="btn btn-dark mx-1" to="/login" role="button">Login</Link>
-        <Link class="btn btn-dark mx-1" to="/signup" role="button">SignUp</Link>
+        {/* <Link class="btn btn-dark mx-1" to="/login" role="button">Login</Link>
+        <Link class="btn btn-dark mx-1" to="/signup" role="button">SignUp</Link> */}
         {/* <i class="fa-solid fa-arrow-right-from-bracket btn " ></i> */}
         </div>
       </nav>

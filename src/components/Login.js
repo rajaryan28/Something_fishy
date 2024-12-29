@@ -57,7 +57,7 @@ const Login = () => {
             <Link to="/" className="text-white">Forgot Password?</Link>
           </div>
           <div className="text-center mt-3">
-            <span className="text-white">Don't have an account? </span>
+            <span className="text-white">New to PCE's Anonymous? </span>
             <Link to="/signup" className="text-white">Sign Up</Link>
           </div>
         </form>

@@ -5,7 +5,7 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 var jwt = require('jsonwebtoken')
 var fetchuser = require('../middleware/fetchuser')
-const JWT_SECRET = 'raj_of_priyadarshini'
+const JWT_SECRET = 'raj_of_priyadarshini' // A JWT secret sign that added in authentication token to authenticate the user
 let success = false;
 
 
@@ -16,19 +16,21 @@ router.post('/createuser',[
    body('email','Enter a valid email').isEmail(),
    body('password','Enter a password (Minimun 5 characters)').isLength({min:5}),
    body('phone','Enter a valid mobile number').isLength({max:10}),
-   body('gender','').notEmpty(),
+   body('gender','Enter gender in words!').notEmpty(),
    body('sem','Write you sem in words').notEmpty(),
    body('department','').notEmpty(),
 ],async(req,res)=>{
    const errors = validationResult(req);
     if(!errors.isEmpty()){
+      success=false
         return res.status(400).json({success,errors:errors.array()});
         
     }
   try{
    let user = await User.findOne({email:req.body.email})
    if(user){
-      return res.status(400).json({ error: "Sorry a user with this email already exists"})
+      success=false
+      return res.status(400).json({ success,error: "Sorry a user with this email already exists"})
    }
   const salt = await bcrypt.genSalt(10)
   const secPass = await bcrypt.hash(req.body.password,salt)
@@ -49,12 +51,14 @@ router.post('/createuser',[
          }
       }
       const authtoken = jwt.sign(data,JWT_SECRET)
+      success=true
       // res.json(user)
-      res.json({authtoken})
+      res.json({success,authtoken})
       
    }catch (error){
+      success=false
       console.error(error.message);
-    res.status(500).send("Some Error occured");
+    res.status(500).send({success},"Some Error occured");
    }
       
    
