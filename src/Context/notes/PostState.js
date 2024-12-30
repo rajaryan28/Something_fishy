@@ -74,8 +74,7 @@ const PostState = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWVhNjE4ODQyOTNhMTViMTQ1NzNhMSIsImlhdCI6MTczNDI1NjcwOH0.IhxJn1gCxIQYVUQfTobby3paWhaW9enthoxDK4ptSiE"
-        // "auth-token": localStorage.getItem("authtoken"),
+        "auth-token": localStorage.getItem("authtoken"),
       },
     });
     const json = await response.json();
@@ -90,8 +89,7 @@ const PostState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWVhNjE4ODQyOTNhMTViMTQ1NzNhMSIsImlhdCI6MTczNDI1NjcwOH0.IhxJn1gCxIQYVUQfTobby3paWhaW9enthoxDK4ptSiE",
-        // "auth-token": localStorage.getItem("authtoken"),
+        "auth-token": localStorage.getItem("authtoken"),
       },
       body: JSON.stringify( {post} ),
     });

@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("authtoken");
+    navigate("/login");
+  };
   return (
     <>
 
@@ -43,7 +50,8 @@ const Navbar = () => {
     "right": "1%","cursor":"pointer"}}>
         {/* <Link class="btn btn-dark mx-1" to="/login" role="button">Login</Link>
         <Link class="btn btn-dark mx-1" to="/signup" role="button">SignUp</Link> */}
-        {/* <i class="fa-solid fa-arrow-right-from-bracket btn " ></i> */}
+        {localStorage.getItem('authtoken')?(<i class="fa-solid fa-arrow-right-from-bracket btn " onClick={handleLogOut} ></i>):''}
+
         </div>
       </nav>
 

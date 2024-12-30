@@ -75,7 +75,7 @@ const SignUp = () => {
             <div className="col-12 col-md-6">
               <div className="form-group my-2">
                 <label htmlFor="username" className="text-white my-1">Username<sup>*</sup></label>
-                <input type="text" className="form-control bg-dark text-white" id="username" name="username" onChange={onChange} placeholder="Enter username" />
+                <input type="text" className="form-control bg-dark text-white" id="username" name="username" onChange={onChange} placeholder="Enter username" minLength={3} />
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ const SignUp = () => {
             <div className="col-12 col-md-6">
               <div className="form-group my-2">
                 <label htmlFor="phone" className="text-white my-1">Phone<sup>*</sup></label>
-                <input type="tel" className="form-control bg-dark text-white" id="phone" name="phone" onChange={onChange} placeholder="Enter phone number" />
+                <input type="tel" className="form-control bg-dark text-white" id="phone" name="phone" onChange={onChange} placeholder="Enter phone number" maxLength={10} />
               </div>
             </div>
           </div>
@@ -119,14 +119,14 @@ const SignUp = () => {
           </div>
           <div className="form-group position-relative my-2">
             <label htmlFor="password" className="text-white my-1">Password<sup>*</sup></label>
-            <input type={passwordVisible ? "text" : "password"} className="form-control bg-dark text-white" id="password" name="password" onChange={onChange} placeholder="Password" />
+            <input type={passwordVisible ? "text" : "password"} className="form-control bg-dark text-white" id="password" name="password" onChange={onChange} placeholder="Password" minLength={5} />
             <button type="button" className="btn btn-link text-white position-absolute" style={{ top: '70%', right: '10px', transform: 'translateY(-50%)' }} onClick={togglePasswordVisibility}>
               {passwordVisible ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <div className="form-group position-relative my-2">
             <label htmlFor="confirmPassword" className="text-white my-1">Confirm Password<sup>*</sup></label>
-            <input type={confirmPasswordVisible ? "text" : "password"} className="form-control bg-dark text-white" id="confirmPassword" name="confirmPassword" onChange={onChange} placeholder="Confirm Password" />
+            <input type={confirmPasswordVisible ? "text" : "password"} className="form-control bg-dark text-white" id="confirmPassword" name="confirmPassword" onChange={onChange} placeholder="Confirm Password" minLength={5} />
             <button type="button" className="btn btn-link text-white position-absolute" style={{ top: '70%', right: '10px', transform: 'translateY(-50%)' }} onClick={toggleConfirmPasswordVisibility}>
               {confirmPasswordVisible ? <FaEyeSlash /> : <FaEye />}
             </button>

@@ -1,12 +1,18 @@
-import React, {useContext,useEffect} from 'react'
+import React, {useContext,useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import PostContext from '../Context/notes/PostContext';
 import PostItem from './PostItem';
 
 const Posts = () => {
+  let navigate = useNavigate();
     const context = useContext(PostContext);
     const {Posts, getallPosts} = context;
     useEffect(() => {
-        getallPosts()
+        if (localStorage.getItem("authtoken")) {
+            getallPosts()
+          } else {
+            navigate("/login");
+          }
         // eslint-disable-next-line
     }, [])
     return (
