@@ -21,13 +21,13 @@ const Navbar = () => {
   <div className="offcanvas-body">
   <ul className="nav">
   <li className="nav-item">
-    <a className="nav-link " aria-current="page" href="/">Active</a>
+    <Link className="nav-link " aria-current="page" to="/">Active</Link>
   </li>
   <li className="nav-item">
-    <a className="nav-link " href="/">Link</a>
+    <Link className="nav-link " to="/">Link</Link>
   </li>
   <li className="nav-item">
-    <a className="nav-link" href="/">Link</a>
+    <Link className="nav-link" to="/">Link</Link>
   </li>
 </ul>
 <h4>Hey my name is Raj aryan </h4>
