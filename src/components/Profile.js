@@ -1,16 +1,23 @@
 import React, { useState, useEffect ,useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import PostContext from '../Context/notes/PostContext';
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
   const context = useContext(PostContext);
-  const { Posts,getallPosts} = context;
+  const { Posts,getUserPosts,deletePost} = context;
+  let navigate = useNavigate();
 
   // Fetch posts from API
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        getallPosts()
+        if (localStorage.getItem("authtoken")) {
+        getUserPosts()
+        }
+        else{
+          navigate("/login");
+        }
       } catch (error) {
         console.error("Error fetching posts:", error);
       } finally {
@@ -55,8 +62,8 @@ const Profile = () => {
             margin: "0 auto 10px",
           }}
         ></div>
-        <h3 className="fw-bold">NAME</h3>
-        <p className="text-muted">username_01</p>
+        <h3 className="fw-bold">Posts.user.name</h3>
+        <p className="text-muted">Posts.user.username</p>
         <div className="d-flex justify-content-center gap-3 flex-wrap">
           <button className="btn btn-outline-dark">
             Edit profile ✏️
@@ -85,8 +92,8 @@ const Profile = () => {
                 border: "none",
               }}
             >
-              <div className="card-body d-flex flex-wrap align-items-center">
-                <div
+              <div className="card-body d-flex align-items-start">
+                {/* <div
                   style={{
                     width: "50px",
                     height: "50px",
@@ -94,11 +101,11 @@ const Profile = () => {
                     backgroundColor: post.color || "skyblue",
                     marginRight: "15px",
                   }}
-                ></div>
-                <div className="flex-grow-1">
-                  <h5 className="card-title fw-bold mb-1">{post.user.username}</h5>
+                ></div> */}
+                <div className="flex-grow-1 ml-2">
+                  {/* <h5 className="card-title fw-bold mb-1">{post.user.username}</h5> */}
                   <p
-                    className="card-text"
+                    className="card-text mb-0"
                     style={{
                       margin: "0",
                       wordBreak: "break-word",
@@ -107,18 +114,24 @@ const Profile = () => {
                     {post.post}
                   </p>
                 </div>
-                <button
-                  className="btn btn-outline-danger btn-sm"
-                  // onClick={() => deletePost(post.id)}
-                  style={{
-                    height: "35px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  ❌
-                </button>
+                <div className="d-flex align-items-center ml-auto">
+                  <button
+                    className="btn btn-outline-danger btn-sm"
+                    onClick={() => {
+                      if (window.confirm("Are you sure you want to delete this post?")) {
+                        deletePost(post._id);
+                      }
+                    }}
+                    style={{
+                      height: "35px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
           ))

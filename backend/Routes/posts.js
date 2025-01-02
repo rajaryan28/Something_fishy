@@ -117,5 +117,21 @@ router.delete("/deletepost/:id", fetchuser, async (req, res) => {
 
 
 
+// Route 1 : Fetching all the posts  : Get "/api/posts/". Login required
+
+router.get("/userpost",fetchuser,async (req, res) => {
+  try {
+    const notes = await Post.find({ user: req.user.id });
+    res.json(notes);
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Some Internal error occured");
+  }
+});
+
+
+
+
 
 module.exports=router

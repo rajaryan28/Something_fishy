@@ -145,9 +145,28 @@ const PostState = (props) => {
     setPosts(newPosts);
   };
 
+
+
+//Fetching Posts
+const getUserPosts = async () => {
+  //Api call
+  const response = await fetch(`${host}/api/posts/userpost`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem("authtoken"),
+    },
+  });
+  const json = await response.json();
+  setPosts(json);
+};
+
+
+
+
   return (
     <PostContext.Provider
-      value={{ Posts, addPost, deletePost, editPost, getallPosts }}
+      value={{ Posts, addPost, deletePost, editPost, getallPosts,getUserPosts }}
       // value={{ post,addPost}}
     >
       {props.children}
