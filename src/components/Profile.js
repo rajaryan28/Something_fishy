@@ -5,7 +5,7 @@ import PostContext from '../Context/notes/PostContext';
 const Profile = () => {
   const [loading, setLoading] = useState(true);
   const context = useContext(PostContext);
-  const { Posts,getUserPosts,deletePost} = context;
+  const { Posts,getUserPosts,deletePost,User,getUser} = context;
   let navigate = useNavigate();
 
   // Fetch posts from API
@@ -14,6 +14,7 @@ const Profile = () => {
       try {
         if (localStorage.getItem("authtoken")) {
         getUserPosts()
+        getUser()
         }
         else{
           navigate("/login");
@@ -26,6 +27,7 @@ const Profile = () => {
     };
 
     fetchPosts();
+    // eslint-disable-next-line
   }, []);
 
   // Delete post
@@ -62,14 +64,14 @@ const Profile = () => {
             margin: "0 auto 10px",
           }}
         ></div>
-        <h3 className="fw-bold">Posts.user.name</h3>
-        <p className="text-muted">Posts.user.username</p>
+        <h3 className="fw-bold">{User.name}</h3>
+        <p className="text-muted">{User.username}</p>
         <div className="d-flex justify-content-center gap-3 flex-wrap">
           <button className="btn btn-outline-dark">
-            Edit profile ✏️
+            Edit profile <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button className="btn btn-outline-dark">
-            Add post ➕
+            Add post <i class="fa-solid fa-plus"></i>
           </button>
         </div>
       </div>

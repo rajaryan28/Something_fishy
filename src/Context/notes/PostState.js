@@ -5,6 +5,7 @@ const PostState = (props) => {
   const host = "http://localhost:4000";
   const PostInitial = [];
   const [Posts, setPosts] = useState(PostInitial);
+  const [User, setUser] = useState([]);
 
 
 
@@ -147,7 +148,7 @@ const PostState = (props) => {
 
 
 
-//Fetching Posts
+//Fetching User sprecific Posts
 const getUserPosts = async () => {
   //Api call
   const response = await fetch(`${host}/api/posts/userpost`, {
@@ -162,11 +163,23 @@ const getUserPosts = async () => {
 };
 
 
+//Fetching  sprecific  User
+const getUser = async () => {
+  //Api call
+  const response = await fetch(`${host}/api/auth/getUser`, {
+    method: "POST",
+    headers: {
+      "auth-token": localStorage.getItem("authtoken"),
+    },
+  });
+  const json = await response.json();
+  setUser(json);
+};
 
 
   return (
     <PostContext.Provider
-      value={{ Posts, addPost, deletePost, editPost, getallPosts,getUserPosts }}
+      value={{ Posts, addPost, deletePost, editPost, getallPosts,getUserPosts,User,getUser }}
       // value={{ post,addPost}}
     >
       {props.children}

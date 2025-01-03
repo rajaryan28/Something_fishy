@@ -7,7 +7,6 @@ const Home = () => {
     <div>
       <Addpost />
       <Posts />
-      
     </div>
   )
 }

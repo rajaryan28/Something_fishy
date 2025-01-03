@@ -53,7 +53,7 @@ const SignUp = () => {
       localStorage.setItem("authtoken", json.authToken);
       navigate("/");
     } else {
-      alert("Login with correct creds!");
+      alert("Try again!");
     }
   };
   const onChange = (e) => {
@@ -134,7 +134,7 @@ const SignUp = () => {
           <button type="submit" className="btn btn-light btn-block my-1 w-100">Sign Up</button>
           <div className="text-center  mb-4">
             <span className="text-white">Already have an account? </span>
-            <a href="/login" className="text-white">Login</a>
+            <Link to="/login" className="text-white">Login</Link>
           </div>
         </form>
       </div>
