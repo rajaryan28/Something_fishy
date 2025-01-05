@@ -1,6 +1,7 @@
 import React, { useState, useEffect ,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import PostContext from '../Context/notes/PostContext';
+import Footer from "./footer";
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ const Profile = () => {
   // };
 
   return (
+    <>
     <div
       className="container mt-4 mb-5"
       style={{
@@ -142,7 +144,11 @@ const Profile = () => {
         )}
       </div>
     </div>
+    
+    <Footer />
+    </>
   );
+  
 };
 
 export default Profile;

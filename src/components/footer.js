@@ -2,14 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const isAuthenticated = Boolean(localStorage.getItem("authtoken"));
-
-  if (!isAuthenticated) {
-    return null;
-  }
 
   return (
     <div>
+      
       <footer className="footer">
         <Link to="/"><button><img width="25" height="25" src="https://img.icons8.com/fluency-systems-regular/50/home--v1.png" alt="home--v1"/></button></Link>
         <button>➕</button>
