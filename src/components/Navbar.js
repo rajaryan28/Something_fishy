@@ -1,14 +1,26 @@
-import React from "react";
+import React ,{useRef}from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let navigate = useNavigate();
+  const refCloseCanvas = useRef(null);
+
+  const closeCanvasIndirect = () => {
+    if(refCloseCanvas.current){
+      refCloseCanvas.current.click();
+    }
+  };
 
   const handleLogOut = () => {
     localStorage.removeItem("authtoken");
     navigate("/login");
   };
+  const handleCanvas  = (event, link) => {
+    closeCanvasIndirect();
+    
+  };
+ 
   return (
     <>
       <div
@@ -22,6 +34,7 @@ const Navbar = () => {
             PCE's Anonymous <span style={{ color: "brown" }}>{"</>"}</span>
           </h5>
           <button
+          ref={refCloseCanvas}
             type="button"
             className="btn-close"
             data-bs-dismiss="offcanvas"
@@ -31,17 +44,17 @@ const Navbar = () => {
         <div className="offcanvas-body container">
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link " to="/">
+              <Link className="nav-link " to="/" onClick={(e) => handleCanvas()}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/futurepanel">
+              <Link className="nav-link " to="/futurepanel" onClick={(e) => handleCanvas(e, "/futurepanel")}>
                 Future Updates
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/about">
+              <Link className="nav-link " to="/about" onClick={(e) => handleCanvas()}>
                 About us
               </Link>
             </li>
