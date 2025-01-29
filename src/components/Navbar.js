@@ -16,10 +16,7 @@ const Navbar = () => {
     localStorage.removeItem("authtoken");
     navigate("/login");
   };
-  const handleCanvas  = (event, link) => {
-    closeCanvasIndirect();
-    
-  };
+
  
   return (
     <>
@@ -44,17 +41,17 @@ const Navbar = () => {
         <div className="offcanvas-body container">
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link " to="/" onClick={(e) => handleCanvas()}>
+              <Link className="nav-link " to="/" onClick={(e) => closeCanvasIndirect()}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/futurepanel" onClick={(e) => handleCanvas(e, "/futurepanel")}>
+              <Link className="nav-link " to="/futurepanel" onClick={(e) => closeCanvasIndirect()}>
                 Future Updates
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/about" onClick={(e) => handleCanvas()}>
+              <Link className="nav-link " to="/about" onClick={(e) => closeCanvasIndirect()}>
                 About us
               </Link>
             </li>
