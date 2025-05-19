@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import About from "./components/About";
 import FuturePanel from "./components/FuturePanel";
+import ForgotPassword from "./components/ForgotPassword";
 function App() {
   
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/futurepanel" element={<FuturePanel/>} />
+          <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
 
           <Route exact path="/profile" element={<Profile />} />
           </Routes>

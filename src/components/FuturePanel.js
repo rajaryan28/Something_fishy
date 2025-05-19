@@ -3,6 +3,7 @@ import React from 'react'
 const FuturePanel = () => {
   const features = [
     { title: "📸 Post Photos", description: "Share your favorite moments with the users of this webApp.", bgColor: "#ffe4b5" },
+    
     { title: "❤️ React to Posts", description: "Express your thoughts by liking and reacting to posts.", bgColor: "#ffcccb" },
     { title: "➕ Follow Users", description: "Stay updated with your favorite users' posts.", bgColor: "#add8e6" },
     { title: "💬 Message Users", description: "Connect privately with direct messages.", bgColor: "#98fb98" },

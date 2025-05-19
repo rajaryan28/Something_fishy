@@ -67,7 +67,7 @@ const Profile = () => {
           }}
         ></div>
         <h3 className="fw-bold">{User.name}</h3>
-        <p className="text-muted">{User.username}</p>
+        <p className="text-muted">@{User.username}</p>
         <div className="d-flex justify-content-center gap-3 flex-wrap">
           <button className="btn btn-outline-dark">
             Edit profile <i class="fa-solid fa-pen-to-square"></i>
