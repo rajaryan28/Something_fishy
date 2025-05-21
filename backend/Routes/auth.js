@@ -173,7 +173,7 @@ router.post("/forgotpassword", async (req, res) => {
    from: '"Raj Aryan" <msdhoni07.raj@gmail.com>',
       to: email,
       subject: "Password Reset Request",
-      text: `Hey looks like you forgot your password for your PCE Anonymous account, click below to reset your password\n "http://localhost:4000/api/auth/resetpassword/${authToken}"`, 
+      text: `Hey looks like you forgot your password for your PCE Anonymous account, click below to reset your password\n "http://localhost:3000/resetpassword/${authToken}"`, 
   }
 
   await transporter.sendMail(receiver)

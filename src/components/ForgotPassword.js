@@ -8,7 +8,7 @@ const ForgotPassword = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         //Api call
-        const response = await fetch(`http://localhost:4000/api/auth/login`, {
+        const response = await fetch(`http://localhost:4000/api/auth/forgotpassword`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -19,12 +19,7 @@ const ForgotPassword = () => {
         });
         const json = await response.json();
         console.log(json);
-        if (json.success) {
-          localStorage.setItem("authtoken", json.authToken);
-          navigate("/");
-        } else {
-          alert("Login with correct creds!");
-        }
+        alert(json.message);
       };
       const onChange = (e) => {
         setLogincreds({ ...logincreds, [e.target.name]: e.target.value });
@@ -32,8 +27,11 @@ const ForgotPassword = () => {
   return (
     <>
           <div className="d-flex justify-content-center align-items-center vh-100" style={{ background: 'radial-gradient(circle,rgb(107, 109, 111),rgb(24, 24, 25))', marginTop: '-80px' }}>
-      <div className="col-md-4">
-        <h2 className="text-center text-white">Login</h2>
+      <div className="col-md-4 mt-5">
+        <h2 className="text-left text-white mt-5">Forgot Password ?</h2>
+        <p>Enter the email address you used when you joined and we’ll send you instructions to reset your password.</p>
+
+<p>For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.</p>
         <form onSubmit={handleSubmit}>
           <div className="form-group my-2">
             <label htmlFor="email" className="text-white my-1">Email address<sup>*</sup></label>
