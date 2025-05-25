@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
-  const { token } = useParams();  // ✅ Extract token from the URL
+  const { token } = useParams();  // Extract token from the URL
   const [logincreds, setLogincreds] = useState({ password: "" });
 
   const handleSubmit = async (e) => {
@@ -41,7 +41,7 @@ const ResetPassword = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100" style={{ background: 'radial-gradient(circle,rgb(107, 109, 111),rgb(24, 24, 25))', marginTop: '-80px' }}>
-      <div className="col-md-4">
+      <div className="col-md-4 mt-3 mx-3">
         <h2 className="text-left text-white">Reset Your Password</h2>
         <p>Looks like you forgot your older password.</p>
         <br />
@@ -53,7 +53,7 @@ const ResetPassword = () => {
               type="password"
               className="form-control bg-dark text-white"
               id="password"
-              name="password"  // ✅ Corrected name
+              name="password"  
               onChange={onChange}
               value={logincreds.password}
               placeholder="Enter new password"

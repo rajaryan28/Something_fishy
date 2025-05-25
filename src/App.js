@@ -10,6 +10,7 @@ import About from "./components/About";
 import FuturePanel from "./components/FuturePanel";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
+import Addpost from "./components/Addpost";
 function App() {
   
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/forgot-password" element={<ForgotPassword/>} />
           <Route exact path="/resetpassword/:token" element={<ResetPassword/>} />
 
+          <Route exact path="/addpost" element={<Addpost />} />
           <Route exact path="/profile" element={<Profile />} />
           </Routes>
           

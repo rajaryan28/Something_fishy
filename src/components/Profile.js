@@ -72,7 +72,7 @@ const Profile = () => {
           <button className="btn btn-outline-dark">
             Edit profile <i class="fa-solid fa-pen-to-square"></i>
           </button>
-          <button className="btn btn-outline-dark">
+          <button className="btn btn-outline-dark" onClick={() => navigate("/addpost")}>
             Add post <i class="fa-solid fa-plus"></i>
           </button>
         </div>

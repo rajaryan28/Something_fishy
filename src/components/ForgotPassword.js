@@ -20,6 +20,7 @@ const ForgotPassword = () => {
         const json = await response.json();
         console.log(json);
         alert(json.message);
+        navigate("/login");
       };
       const onChange = (e) => {
         setLogincreds({ ...logincreds, [e.target.name]: e.target.value });
@@ -27,7 +28,7 @@ const ForgotPassword = () => {
   return (
     <>
           <div className="d-flex justify-content-center align-items-center vh-100" style={{ background: 'radial-gradient(circle,rgb(107, 109, 111),rgb(24, 24, 25))', marginTop: '-80px' }}>
-      <div className="col-md-4 mt-5">
+      <div className="col-md-4 mt-3 mx-3">
         <h2 className="text-left text-white mt-5">Forgot Password ?</h2>
         <p>Enter the email address you used when you joined and we’ll send you instructions to reset your password.</p>
 
