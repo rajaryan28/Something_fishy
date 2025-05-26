@@ -6,7 +6,7 @@ import Footer from './footer'
 const Home = () => {
   return (
     <div>
-      <Addpost />
+      {/* <Addpost /> */}
       <Posts />
       <Footer />
     </div>

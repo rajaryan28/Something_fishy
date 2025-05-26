@@ -131,6 +131,24 @@ router.get("/userpost",fetchuser,async (req, res) => {
 });
 
 
+//Route 6: Fetching the likes of post
+// Like a post
+router.post('/:id/like', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+
+    post.likes = (post.likes || 0) + 1;
+    await post.save();
+
+    res.status(200).json({ likes: post.likes });
+  } catch (error) {
+    console.error('Error liking post:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
 
 
 
