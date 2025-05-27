@@ -1,7 +1,27 @@
-import React from "react";
+import React,{useContext,useState} from 'react';
+import PostContext from '../Context/notes/PostContext';
+import { Button } from 'react-bootstrap';
 
 const PostItem = (props) => {
   const { post, user} = props;
+  const context = useContext(PostContext);
+  const { handleLike,likes} = context;
+  
+  const [isLiking, setIsLiking] = useState(false);
+  
+const handlingLike = (postId) => async () => {
+  if (isLiking) return;
+  
+  setIsLiking(true);
+  try {
+    await handleLike(postId);
+    console.log(handleLike.response);
+      
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
+    setIsLiking(false);
+  }
   return (
     <div>
       <div
@@ -25,6 +45,16 @@ const PostItem = (props) => {
           <div style={{flexGrow: "1"}}>
             <h5 className="card-title mb-1 fw-bold">{user.username}</h5>
             <p className="card-text text-muted mb-0" style={{wordWrap: "break-word", whiteSpace: "normal"}}>{post.post}</p>
+            
+          <Button
+            variant="outline-danger"
+            onClick={handlingLike(post._id)}
+            disabled={handleLike.isLiking}
+            style={{ minWidth: '80px' }}
+          >
+            👍 {post.likes}
+          </Button>
+        
           </div>
         </div> 
       </div>

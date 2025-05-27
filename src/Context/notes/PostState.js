@@ -7,6 +7,8 @@ const PostState = (props) => {
   const [Posts, setPosts] = useState(PostInitial);
   const [User, setUser] = useState([]);
 
+ 
+
 
 
 
@@ -176,10 +178,31 @@ const getUser = async () => {
   setUser(json);
 };
 
+//Handling Likes
+const handleLike = async (id) => {
+  //Api call
+
+    try {
+      const response = await fetch(`${host}/api/posts/${id}/like`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });if (response.ok) {
+        const data = await response.json();
+        // setLikes(data.likes);
+      } else {
+        console.error('Failed to like post');
+      } 
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
 
   return (
     <PostContext.Provider
-      value={{ Posts, addPost, deletePost, editPost, getallPosts,getUserPosts,User,getUser }}
+      value={{ Posts, addPost, deletePost, editPost, getallPosts,getUserPosts,User,getUser,handleLike }}
       // value={{ post,addPost}}
     >
       {props.children}
