@@ -7,11 +7,6 @@ const PostState = (props) => {
   const [Posts, setPosts] = useState(PostInitial);
   const [User, setUser] = useState([]);
 
- 
-
-
-
-
   // const PostInitial = [
   //   {
   //     "_id": "675d9c90388b552e6bb693e1",
@@ -43,10 +38,9 @@ const PostState = (props) => {
   //     "date": "2024-12-14T14:56:16.728Z",
   //     "__v": 0
   //   },
-  // ]
-   
-  // const [post,setPost] = useState(PostInitial)
+  // ];
 
+  // const [post,setPost] = useState(PostInitial)
 
   //  // Add a Note
   //  const addPost = (postt)=>{
@@ -62,13 +56,8 @@ const PostState = (props) => {
   //     "date": "2024-12-14T14:56:16.728Z",
   //     "__v": 0
   //   };
-  //   setPost(post.concat(posts)) 
+  //   setPost(post.concat(posts))
   // }
-
-
-
-
-
 
   //Fetching Posts
   const getallPosts = async () => {
@@ -94,7 +83,7 @@ const PostState = (props) => {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("authtoken"),
       },
-      body: JSON.stringify( {post} ),
+      body: JSON.stringify({ post }),
     });
     return response.json();
   };
@@ -148,61 +137,62 @@ const PostState = (props) => {
     setPosts(newPosts);
   };
 
-
-
-//Fetching User sprecific Posts
-const getUserPosts = async () => {
-  //Api call
-  const response = await fetch(`${host}/api/posts/userpost`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("authtoken"),
-    },
-  });
-  const json = await response.json();
-  setPosts(json);
-};
-
-
-//Fetching  sprecific  User
-const getUser = async () => {
-  //Api call
-  const response = await fetch(`${host}/api/auth/getUser`, {
-    method: "POST",
-    headers: {
-      "auth-token": localStorage.getItem("authtoken"),
-    },
-  });
-  const json = await response.json();
-  setUser(json);
-};
-
-//Handling Likes
-const handleLike = async (id) => {
-  //Api call
-
-    try {
-      const response = await fetch(`${host}/api/posts/${id}/like`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });if (response.ok) {
-        const data = await response.json();
-        // setLikes(data.likes);
-      } else {
-        console.error('Failed to like post');
-      } 
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  //Fetching User sprecific Posts
+  const getUserPosts = async () => {
+    //Api call
+    const response = await fetch(`${host}/api/posts/userpost`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("authtoken"),
+      },
+    });
+    const json = await response.json();
+    setPosts(json);
   };
 
+  //Fetching  sprecific  User
+  const getUser = async () => {
+    //Api call
+    const response = await fetch(`${host}/api/auth/getUser`, {
+      method: "POST",
+      headers: {
+        "auth-token": localStorage.getItem("authtoken"),
+      },
+    });
+    const json = await response.json();
+    setUser(json);
+  };
+
+  //Handling Likes
+  const getCurrentUser = async () => {
+  const token = localStorage.getItem('authtoken');
+  if (!token) return null;
+
+  const res = await fetch('http://localhost:4000/api/auth/getuser', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'auth-token': token,
+    },
+  });
+  if (!res.ok) return null;
+  return await res.json(); // should return { _id, name, username, ... }
+};
 
   return (
     <PostContext.Provider
-      value={{ Posts, addPost, deletePost, editPost, getallPosts,getUserPosts,User,getUser,handleLike }}
+      value={{
+        Posts,
+        addPost,
+        deletePost,
+        editPost,
+        getallPosts,
+        getUserPosts,
+        User,
+        getUser,
+        getCurrentUser
+      }}
       // value={{ post,addPost}}
     >
       {props.children}
@@ -211,3 +201,5 @@ const handleLike = async (id) => {
 };
 
 export default PostState;
+
+

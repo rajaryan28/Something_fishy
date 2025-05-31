@@ -132,24 +132,26 @@ router.get("/userpost",fetchuser,async (req, res) => {
 
 
 //Route 6: Fetching the likes of post
-// Like a post
-router.post('/:id/like', async (req, res) => {
+// Like or Unlike a post
+router.post('/like/:id', fetchuser, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    if (!post) return res.status(404).json({ message: 'Post not found' });
+    if (!post) return res.status(404).send("Post not found");
 
-    post.likes = (post.likes || 0) + 1;
+    const userId = req.user.id;
+    const index = post.likes.indexOf(userId);
+
+    if (index === -1) {
+      post.likes.push(userId); // Like
+    } else {
+      post.likes.splice(index, 1); // Unlike
+    }
+
     await post.save();
-
-    res.status(200).json({ likes: post.likes });
-  } catch (error) {
-    console.error('Error liking post:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json({ likes: post.likes.length, liked: index === -1 });
+  } catch (err) {
+    res.status(500).send("Server Error");
   }
 });
-
-
-
-
 
 module.exports=router
