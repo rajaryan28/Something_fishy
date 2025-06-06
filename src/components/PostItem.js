@@ -53,7 +53,7 @@ const PostItem = (props) => {
 
           {/* Text Content */}
           <div style={{ position: "relative", flexGrow: "1" }}>
-            <h5 className="card-title mb-1 fw-bold">{user.username}</h5>
+            <h5 className="card-title mb-1 fw-bold">{post.user.username}</h5>
             <p
               className="card-text text-muted mb-0"
               style={{ wordWrap: "break-word", whiteSpace: "normal" }}

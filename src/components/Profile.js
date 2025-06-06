@@ -115,9 +115,10 @@ const Profile = () => {
                       wordBreak: "break-word",
                     }}
                   >
-                    {post.post}
+                    {post.post} <span className="blockquote-footer"><small>❤{post.likes.length}</small></span>
                   </p>
                 </div>
+                
                 <div className="d-flex align-items-center ml-auto">
                   <button
                     className="btn btn-outline-danger btn-sm"
