@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from "./footer";
 
 const FuturePanel = () => {
   const features = [
@@ -44,6 +45,7 @@ const FuturePanel = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

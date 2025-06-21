@@ -1,10 +1,50 @@
 import React, { useState } from 'react';
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
+const CARD_COLORS = [
+  "#B9D7FF", // light blue
+  "#ffe4e1", // misty rose
+  "#e6e6fa", // lavender
+  "#f0fff0", // honeydew
+  "#fffacd", // lemon chiffon
+  "#f5f5dc", // beige
+  "#e0ffff", // light cyan
+  "#f5f5f5", // white smoke
+  "#f0f8ff", // alice blue
+  "#fafad2"  // light goldenrod yellow
+];
+
+const CIRCLE_COLORS = [
+  "#66CBDA", // steel blue
+  "#ff7f7f", // light red
+  "#9370db", // medium purple
+  "#20b2aa", // light sea green
+  "#ffd700", // gold
+  "#deb887", // burlywood
+  "#40e0d0", // turquoise
+  "#a9a9a9", // dark gray
+  "#6495ed", // cornflower blue
+  "#ffd700"  // gold
+];
+
+//A simple hash function to convert a string to an index(it will always return the same index for the same string and different strings will return different indices)
+function hashStringToIndex(str, arrayLength) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return Math.abs(hash) % arrayLength; // Maths.abs to ensure a positive index and  %arrayLength to wrap around the array
+}
+
 const PostItem = (props) => {
   const { post, userId, user } = props;
   const [likes, setLikes] = useState(post.likes || []);
   const [isLiking, setIsLiking] = useState(false);
+
+  // Consistent color per post
+  const colorIndex = hashStringToIndex(post._id, CARD_COLORS.length);
+  const randomColor = CARD_COLORS[colorIndex];
+  const circleColor = CIRCLE_COLORS[colorIndex];
 
   const isLiked = userId && likes.includes(userId);
 
@@ -36,7 +76,7 @@ const PostItem = (props) => {
     <div>
       <div
         className="card mx-auto my-4 shadow-lg"
-        style={{ borderRadius: "15px", backgroundColor: "#add8e6", overflow: "hidden" }}
+        style={{ borderRadius: "15px", backgroundColor: randomColor, overflow: "hidden" }}
         id="postCard"
       >
         <div className="card-body d-flex flex-sm-row align-items-center" style={{ position: "relative" }}>
@@ -46,7 +86,7 @@ const PostItem = (props) => {
             style={{
               width: "60px",
               height: "60px",
-              backgroundColor: "#5bc0de",
+              backgroundColor: circleColor,
               borderRadius: "50%",
             }}
           ></div>
