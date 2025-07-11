@@ -46,6 +46,28 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link " to="/" onClick={(e) => closeCanvasIndirect()}>
+                Webinars
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link " to="/" onClick={(e) => closeCanvasIndirect()}>
+                Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link " to="/" onClick={(e) => closeCanvasIndirect()}>
+                Competitons
+              </Link>
+            </li>
+            
+          </ul>
+          <hr />
+          <h4>PCE's latest updates </h4>
+        </div>
+        <br />
+        <ul className="nav">
+          <li className="nav-item">
               <Link className="nav-link " to="/futurepanel" onClick={(e) => closeCanvasIndirect()}>
                 Future Updates
               </Link>
@@ -55,10 +77,7 @@ const Navbar = () => {
                 About us
               </Link>
             </li>
-          </ul>
-          <hr />
-          <h4>Hey my name is Raj aryan </h4>
-        </div>
+        </ul>
       </div>
 
       {/* actual code  */}

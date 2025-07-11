@@ -117,7 +117,7 @@ router.delete("/deletepost/:id", fetchuser, async (req, res) => {
 
 
 
-// Route 1 : Fetching all the posts  : Get "/api/posts/". Login required
+// Route 5 : Fetching all the posts  : Get "/api/posts/". Login required
 
 router.get("/userpost",fetchuser,async (req, res) => {
   try {

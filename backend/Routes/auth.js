@@ -210,5 +210,31 @@ router.post("/resetpassword/:token", async (req, res) => {
 });
 
 
+// Route 6 : Update specific user : Patch "/api/auth/updateuser". Login required
+
+router.patch("/updateuser", fetchuser, async (req, res) => {
+  try {
+    const { name,username,phone,sem, } = req.body; // add other fields as needed
+
+    // Find the user by ID
+    let user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).send("User not found!");
+    }
+
+    // Update fields if provided
+    if (name) user.name = name;
+    if (username) user.username = username;
+    if (phone) user.phone = phone;
+    if (sem) user.sem = sem;
+
+    await user.save();
+    res.json({ success: true, user });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Some Internal error occurred");
+  }
+});
+
 
 module.exports = router;
