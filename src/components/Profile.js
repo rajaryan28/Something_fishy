@@ -2,11 +2,19 @@ import React, { useState, useEffect ,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import PostContext from '../Context/notes/PostContext';
 import Footer from "./footer";
+import { Modal, Form } from "react-bootstrap";
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const context = useContext(PostContext);
-  const { Posts,getUserPosts,deletePost,User,getUser} = context;
+  const { Posts, getUserPosts, deletePost, User, getUser, updateUser } = context;
+  const [formData, setFormData] = useState({
+    name: User?.name || "",
+    username: User?.username || "",
+    phone: User?.phone || "",
+    sem: User?.sem || "",
+  });
   let navigate = useNavigate();
 
   // Fetch posts from API
@@ -31,20 +39,28 @@ const Profile = () => {
     // eslint-disable-next-line
   }, []);
 
-  // Delete post
-  // const deletePost = async (postId) => {
-  //   try {
-  //     const response = await fetch(`http://your-backend-api-endpoint/posts/${postId}`, {
-  //       method: "DELETE",
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error("Failed to delete post");
-  //     }
-  //     setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
-  //   } catch (error) {
-  //     console.error("Error deleting post:", error);
-  //   }
-  // };
+  const handleEditClick = () => {
+    setFormData({
+      name: User.name || "",
+      username: User.username || "",
+      phone: User.phone || "",
+      sem: User.sem || "",
+    });
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => setShowModal(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    await updateUser(formData);
+    getUser(); // Refresh user info
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -69,11 +85,11 @@ const Profile = () => {
         <h3 className="fw-bold">{User.name}</h3>
         <p className="text-muted">@{User.username}</p>
         <div className="d-flex justify-content-center gap-3 flex-wrap">
-          <button className="btn btn-outline-dark">
-            Edit profile <i class="fa-solid fa-pen-to-square"></i>
+          <button className="btn btn-outline-dark" onClick={handleEditClick}>
+            Edit profile <i className="fa-solid fa-pen-to-square"></i>
           </button>
           <button className="btn btn-outline-dark" onClick={() => navigate("/addpost")}>
-            Add post <i class="fa-solid fa-plus"></i>
+            Add post <i className="fa-solid fa-plus"></i>
           </button>
         </div>
       </div>
@@ -147,6 +163,65 @@ const Profile = () => {
     </div>
     
     <Footer />
+
+    {/* Edit Profile Modal */}
+    <Modal show={showModal} onHide={handleCloseModal} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>Edit Profile</Modal.Title>
+      </Modal.Header>
+      <Form onSubmit={handleSave}>
+        <Modal.Body>
+          <Form.Group className="mb-3">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control
+              type="mobile"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Sem</Form.Label>
+            <Form.Control
+              type="text"
+              name="sem"
+              value={formData.sem}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="btn btn-secondary" onClick={handleCloseModal} type="button">
+            Cancel
+          </button>
+          <button className="btn btn-primary" type="submit">
+            Save Changes
+          </button>
+        </Modal.Footer>
+      </Form>
+    </Modal>
     </>
   );
   

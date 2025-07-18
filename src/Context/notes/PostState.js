@@ -166,19 +166,36 @@ const PostState = (props) => {
 
   //Handling Likes
   const getCurrentUser = async () => {
-  const token = localStorage.getItem('authtoken');
-  if (!token) return null;
+    const token = localStorage.getItem("authtoken");
+    if (!token) return null;
 
-  const res = await fetch('http://localhost:4000/api/auth/getuser', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'auth-token': token,
-    },
-  });
-  if (!res.ok) return null;
-  return await res.json(); // should return { _id, name, username, ... }
-};
+    const res = await fetch("http://localhost:4000/api/auth/getuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    });
+    if (!res.ok) return null;
+    return await res.json(); // should return { _id, name, username, ... }
+  };
+
+  // Update User Information
+  const updateUser = async (userData) => {
+    // userData is an object like { username, email, ... }
+    const response = await fetch(`${host}/api/auth/updateuser`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("authtoken"),
+      },
+      body: JSON.stringify(userData),
+    });
+    const json = await response.json();
+    // Optionally update local User state if needed:
+    if (json.success) setUser(json.user);
+    return json;
+  };
 
   return (
     <PostContext.Provider
@@ -191,9 +208,9 @@ const PostState = (props) => {
         getUserPosts,
         User,
         getUser,
-        getCurrentUser
+        getCurrentUser,
+        updateUser
       }}
-      // value={{ post,addPost}}
     >
       {props.children}
     </PostContext.Provider>
